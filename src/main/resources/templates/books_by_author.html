@@ -23,5 +23,11 @@
             </tr>
         </tbody>
     </table>
+    <form action="add_book" method="post">
+        <input type="hidden" name="author_id" th:value="${author.id}">
+        <input id="title" type="text" name="title">
+        <input id="pages" type="number" name="pages">
+        <input type="submit" value="Добавить">
+    </form>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.example.web0911.controllers;
 
 import com.example.web0911.db.Author;
 import com.example.web0911.services.AuthorService;
+import com.example.web0911.services.BookService;
 import com.example.web0911.services.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ public class MainController {
     private StudentService studentService;
 
     private AuthorService authorService;
+
+    private BookService bookService;
 
     @GetMapping("/home/{color}")
     public String home(@PathVariable String color,
@@ -63,5 +66,13 @@ public class MainController {
         } else {
             return "redirect:/authors";
         }
+    }
+
+    @PostMapping("add_book")
+    public String addBook(@RequestParam int author_id, @RequestParam String title, @RequestParam int pages) {
+        Optional<Author> author = authorService.findAuthor(author_id);
+        if (author.isEmpty()) return "error";
+        bookService.addBook(author.get(), title, pages);
+        return "redirect:/show_author_books?id="+author_id;
     }
 }
