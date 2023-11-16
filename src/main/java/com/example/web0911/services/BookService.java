@@ -12,11 +12,8 @@ public class BookService {
     private BookRepository bookRepository;
 
     public void addBook(Author author, String title, int pages) {
-        Book book = new Book();
-        book.setTitle(title);
-        book.setPages(pages);
+        Book book = new Book(0, title, pages);
         book.setAuthor(author);
-        book.setId(0);
         bookRepository.save(book);
     }
 }

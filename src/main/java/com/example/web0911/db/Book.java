@@ -2,15 +2,18 @@ package com.example.web0911.db;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "book")
+@NoArgsConstructor
 public class Book {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "title", nullable = false, length = 150)
@@ -23,4 +26,10 @@ public class Book {
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
 
+
+    public Book(Integer id, String title, Integer pages) {
+        this.id = id;
+        this.title = title;
+        this.pages = pages;
+    }
 }
