@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторы</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <form method="post" action="add_author">
+        <label for="name">Новый автор:</label>
+        <input id="name" type="text" name="author">
+        <input type="submit" value="Добавить">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Автор</th>
+                <th>Х</th>
+                <th>Книги</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="a : ${authors}">
+                <td th:text="${a.id}"></td>
+                <td th:text="${a.name}"></td>
+                <td> <a th:href="@{/delete_author(id=${a.id})}">delete</a> </td>
+                <td> <a th:href="@{/show_author_books(id=${a.id})}">books</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
