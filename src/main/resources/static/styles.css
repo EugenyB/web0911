@@ -9,3 +9,15 @@ th {
 td {
     background-color: white;
 }
+
+.leftcol {
+    float: left;
+    width: 300px;
+    padding: 5px;
+    margin: 10px 10px 20px 5px;
+}
+
+.rightcol {
+    margin: 10px 10px 20px 325px;
+    padding: 5px;
+}
